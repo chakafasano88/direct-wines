@@ -35,9 +35,7 @@ class ProductList extends Component {
         }
     }
 
-    _handleChecked = (index) => {
-        this.setState({ checked: index });
-    }
+    _handleChecked = (index) => { this.setState({ checked: index });}
 
     _onZipCodeChange = (e) => {
         const { zip } = this.state;
@@ -48,20 +46,20 @@ class ProductList extends Component {
     }
 
     render() {
-        const { items, checked, zipDefaultMessage, city, stateName } = this.state;
+        const { items, checked, zipDefaultMessage, city, stateName, selected } = this.state;
         console.log("iutem", items)
         return (
             <div>
                 <div className="row">
-                    <div className="col-sm-3" />
-                    <div className="col-sm-6">
+                    <div className="col-sm-2" />
+                    <div className="col-sm-8">
                         <div className="card">
                             <div className="card-header text-left"><span className="arrow-box">Step 1</span><span className="header-text" >Which Case Would You Like?</span></div>
                             <div className="card-body">
-                                <p className="text-left" >
+                                <p className="d-none d-sm-block text-left" >
                                     Whatever you choose, we'll add in two bonus Cabs and two crystal glasses and you'll have the complete package - worth over $250 - for ONLY $69.99 (plus $19.99 shipping & and applicable tax; please allow 5-10 days for delivery, depending on shipping state.)
                                 </p>
-                                <ul>
+                                <ul className="d-none d-sm-block">
                                     {Object.keys(items).length && items.mainItems.map((item, index) => (
                                         <div key={index} className="list-item-wrapper d-flex" >
                                             <input className="mr-2" checked={checked === index} type="radio" value={item} onChange={e => this._handleChecked(index)} />
@@ -69,23 +67,45 @@ class ProductList extends Component {
                                         </div>
                                     ))}
                                 </ul>
-                                <div className="row">
-                                    <div className="col-sm-6">
+
+                                <div className="mobile-list d-block d-sm-none">
+                                    {Object.keys(items).length && items.mainItems.map((item, index) => (
+                                        <div key={index} className={`list-item-wrapper d-flex flex-column ${checked === index && 'active'}`} >
+                                                <h4> {item.product.name} + 2 Bonus Bottles and Glasses</h4>
+                                                <p>JUST {item.listPrice}</p>
+                                                <button 
+                                                    className="btn btn-primary active"  
+                                                    type="button" 
+                                                    // value={item} 
+                                                    onClick={e => this._handleChecked(index)}
+                                                >
+                                                {selected ? 'Case Selected' : 'Select this Case'}
+                                                </button>
+                                                <div className="arrow-up"></div> 
+                                        </div>
+                                    ))}
+                                </div>
+                                
+                                <div className="row mt-2">
+                                    <div className="col-sm-12">
                                         <div className="text-left form-group">
                                             <label className="control-label">Zip <span style={{ color: 'red' }} >*</span> </label>
-                                            <div>
-                                                <input onChange={this._onZipCodeChange} name="zip" type="text" className="form-control" />
+                                            <div className="d-sm-flex" >
+                                                <input 
+                                                    onChange={this._onZipCodeChange} 
+                                                    name="zip" 
+                                                    type="text" 
+                                                    className="form-control mr-2" 
+                                                />
+                                                <p className="mt-2" >{!city ? zipDefaultMessage : `${city}, ${stateName} `}</p> 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-sm-6 d-flex justify-content-start align-items-center">
-                                        {!city ? zipDefaultMessage : `${city}, ${stateName} `}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-3" />
+                    <div className="col-sm-2" />
                 </div>
             </div>
         );

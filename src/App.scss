@@ -1,19 +1,22 @@
 .App {
   text-align: center;
+  padding: 20px;
+  p { margin: 0; }
   .card {
     .card-header {
       color: #E01118;
       border-bottom: 3px solid #E01118;
-      font-size: 22px;
       background-color: white;
       margin-left: 12px;
       margin-right: 12px;
       padding-left: 0;
+      padding-right: 0;
       .arrow-box {
         position: relative;
         background: #E01118;
         color: white;
         padding: 7px 10px;
+        font-size: 16px;
 
         &:after {
           left: 100%;
@@ -26,27 +29,107 @@
           pointer-events: none;
           border-color: rgba(58, 188, 61, 0);
           border-left-color: #E01118;
-          border-width: 20px;
-          margin-top: -20px;
+          border-width: 17px;
+          margin-top: -17px;
           margin-right: 20px;
         }
       }
       .header-text {
         color: #E01118; 
-        font-size: 22px; 
+        font-size: 16px;
         margin-left: 20px;
         padding: 5px 10px;
       }
     }
 
     .card-body {
+      input[name="zip"] {
+        width: 200px;
+      }
       ul {
         list-style: none;
         padding-left: 0;
         .list-item-wrapper {
           line-height: 2.5;
-          span + a {
+          span, a {
             font-weight: bold
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) { 
+  .App {
+    text-align: center;
+    padding: 20px;
+    .card {
+      .card-header {
+        .arrow-box {
+          position: relative;
+          background: #E01118;
+          color: white;
+          padding: 5.5px 8px;
+          font-size: 12px;
+  
+          &:after {
+            border-width: 13px;
+            margin-top: -13px;
+          }
+        }
+        .header-text {
+          font-size: 12px;
+          margin-left: 8px;
+        }
+      }
+  
+      .card-body {
+        .mobile-list {
+          list-style: none;
+          padding-left: 0;
+          .list-item-wrapper {
+            line-height: 2.5;
+            padding: 20px;
+            border-bottom: 3px solid #d7182a;
+
+            &.active {
+              background: #eee;
+              .btn {
+                background-color: #fff;
+                color: #444 !important;
+                border: 1px solid #000;
+              }
+            }
+
+
+            .arrow-up {
+              width: 0;
+              height: 0;
+              border-left: 15px solid transparent;
+              border-right: 15px solid transparent;
+              // display: none;
+              margin: 0 auto;
+              position: relative;
+              top: 20px;
+            }
+
+            span, a {
+              font-weight: bold
+            }
+            h4 {
+              font-size: 16px;
+              color: #d7182a;
+            }
+            .btn {
+              border-radius: 0;
+              font-size: 20px;
+              background-color: #d7182a;
+              color: #fff !important;
+              border: 1px solid transparent;
+              box-shadow: none;
+            }
           }
         }
       }
