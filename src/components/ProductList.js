@@ -62,7 +62,7 @@ class ProductList extends Component {
                                     {Object.keys(items).length && items.mainItems.map((item, index) => (
                                         <div key={index} className="list-item-wrapper d-flex" >
                                             <input className="mr-2" checked={checked === index} type="radio" value={item} onChange={e => this._handleChecked(index)} />
-                                            <li> <span>{item.product.name}</span> + 2 Bonus Bottles and Glasses <span>JUST {item.listPrice}</span> <a target="_blank" href="https://www.directwinesinc.com/" >view wines</a></li>
+                                            <li> <span>{item.product.name}</span> + 2 Bonus Bottles and Glasses <span>JUST ${item.listPrice}</span> <a target="_blank" href="https://www.directwinesinc.com/" >view wines</a></li>
                                         </div>
                                     ))}
                                 </ul>
@@ -71,7 +71,7 @@ class ProductList extends Component {
                                     {Object.keys(items).length && items.mainItems.map((item, index) => (
                                         <div key={index} className={`list-item-wrapper d-flex flex-column ${checked === index && 'active'}`} >
                                             <h4> {item.product.name} + 2 Bonus Bottles and Glasses</h4>
-                                            <p>JUST {item.listPrice}</p>
+                                            <p>JUST ${item.listPrice}</p>
                                             <button
                                                 className="btn btn-primary active"
                                                 type="button"
