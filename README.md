@@ -1,6 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+`run yarn, or npm i to install dependencies`
+
 In the project directory, you can run:
 
 ### `yarn start`
@@ -13,8 +16,8 @@ You will also see any lint errors in the console.
 
 ### `yarn server`
 
-In a separate tab, runs the app server in the development mode.<br>
-The server runs on port 5000
+In a separate tab, runs the app server in development mode.<br>
+The server runs on port 5000.
 
 ### `yarn test`
 
