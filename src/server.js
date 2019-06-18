@@ -21,7 +21,6 @@ app.get('/products', (req, res, next) => {
 app.post('/zipcode', function(req, res, next) {
     const { zip } = req.body;
     request(`https://www.wsjwine.com/api/address/zipcode/${zip}`, (err, response, body) => {
-        console.log("err", err)
         if(err) {
             next(err);
         } else {

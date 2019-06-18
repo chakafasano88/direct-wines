@@ -27,15 +27,15 @@ class ProductList extends Component {
 
     _getLocation = async () => {
         const { zip } = this.state;
-
         const res = await axios.post('/zipcode', { zip })
+
         if (res.data.response) {
             const { city, stateName } = res.data.response;
             this.setState({ stateName, city })
         }
     }
 
-    _handleChecked = (index) => { this.setState({ checked: index });}
+    _handleChecked = (index) => { this.setState({ checked: index }); }
 
     _onZipCodeChange = (e) => {
         const { zip } = this.state;
@@ -47,7 +47,6 @@ class ProductList extends Component {
 
     render() {
         const { items, checked, zipDefaultMessage, city, stateName, selected } = this.state;
-        console.log("iutem", items)
         return (
             <div>
                 <div className="row">
@@ -71,33 +70,32 @@ class ProductList extends Component {
                                 <div className="mobile-list d-block d-sm-none">
                                     {Object.keys(items).length && items.mainItems.map((item, index) => (
                                         <div key={index} className={`list-item-wrapper d-flex flex-column ${checked === index && 'active'}`} >
-                                                <h4> {item.product.name} + 2 Bonus Bottles and Glasses</h4>
-                                                <p>JUST {item.listPrice}</p>
-                                                <button 
-                                                    className="btn btn-primary active"  
-                                                    type="button" 
-                                                    // value={item} 
-                                                    onClick={e => this._handleChecked(index)}
-                                                >
+                                            <h4> {item.product.name} + 2 Bonus Bottles and Glasses</h4>
+                                            <p>JUST {item.listPrice}</p>
+                                            <button
+                                                className="btn btn-primary active"
+                                                type="button"
+                                                onClick={e => this._handleChecked(index)}
+                                            >
                                                 {selected ? 'Case Selected' : 'Select this Case'}
-                                                </button>
-                                                <div className="arrow-up"></div> 
+                                            </button>
+                                            <div className="arrow-up"></div>
                                         </div>
                                     ))}
                                 </div>
-                                
+
                                 <div className="row mt-2">
                                     <div className="col-sm-12">
                                         <div className="text-left form-group">
                                             <label className="control-label">Zip <span style={{ color: 'red' }} >*</span> </label>
                                             <div className="d-sm-flex" >
-                                                <input 
-                                                    onChange={this._onZipCodeChange} 
-                                                    name="zip" 
-                                                    type="text" 
-                                                    className="form-control mr-2" 
+                                                <input
+                                                    onChange={this._onZipCodeChange}
+                                                    name="zip"
+                                                    type="text"
+                                                    className="form-control mr-2"
                                                 />
-                                                <p className="mt-2" >{!city ? zipDefaultMessage : `${city}, ${stateName} `}</p> 
+                                                <p className="mt-2" >{!city ? zipDefaultMessage : `${city}, ${stateName} `}</p>
                                             </div>
                                         </div>
                                     </div>
