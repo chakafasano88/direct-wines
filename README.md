@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-`run yarn, or npm i to` to install application dependencies.
+`run yarn, or npm i` to install application dependencies.
 
 In the project directory, you can run:
 
